@@ -1,11 +1,15 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-     <div class="font-co"> HOME PAGE</div> 
+     <div text-center padding-horizontal > HOME PAGE</div> 
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button color="danger" (click)="gotoLogin()">Login</button>
+  <div text-center >
+  <img height="500" width="500" src="{{srcimg}}"></div>
+  <div text-center>
+  <button ion-button color="secondary" (click)="gotoLogin()">Login</button>
+  </div>
 </ion-content>
