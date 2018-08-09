@@ -1,0 +1,32 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><div text-center>NEW USER</div></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating> USERNAME</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>PASSWORD</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>PHONE NUMBER</ion-label>
+      <ion-input type="number" [(ngModel)]="user.phoneno"></ion-input>
+    </ion-item>
+    <ion-item >
+    <ion-label floating>EMAIL ADDRESS</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  </ion-list>
+  <button ion-button color="secondary" (click)="signUp(user)">CREATE AN ACCOUNT</button>
+
+</ion-content>

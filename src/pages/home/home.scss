@@ -1,7 +1,17 @@
 page-home {
-    .font-co{
+    .font-co {
         color: black;
-        
+        font-size: 12px;
+        margin-top: 10px;
     }
+
+    .font-co button
+    {
+        padding-left: 4px;
+        padding-bottom: 10px;
+        font-size: 12px;    
+        text-transform: none;
+    }
+  
 
 }
