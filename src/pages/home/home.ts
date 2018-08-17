@@ -15,10 +15,10 @@ export class HomePage {
   }
 
   gotoLogin(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
   gotoSignUp(){
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.setRoot(SignupPage);
   }
 
   ionViewDidLoad() {

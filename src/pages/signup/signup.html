@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title><div text-center>NEW USER</div></ion-title>
   </ion-navbar>
 
@@ -12,21 +12,25 @@
   <ion-list>
     <ion-item>
       <ion-label floating> USERNAME</ion-label>
-      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.username" required></ion-input>
+      
     </ion-item>
     <ion-item>
       <ion-label floating>PASSWORD</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>PHONE NUMBER</ion-label>
-      <ion-input type="number" [(ngModel)]="user.phoneno"></ion-input>
+      <ion-input  required type="number" [(ngModel)]="user.phoneno"></ion-input>
     </ion-item>
     <ion-item >
     <ion-label floating>EMAIL ADDRESS</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    <ion-input type="text" required [(ngModel)]="user.email"></ion-input>
   </ion-item>
   </ion-list>
-  <button ion-button color="secondary" (click)="signUp(user)">CREATE AN ACCOUNT</button>
+  <button [disabled]="!user.username || !user.password || !user.phoneno || !user.email" ion-button color="secondary" (click)="signUp(user)">CREATE AN ACCOUNT</button>
+  <div class="font-co" style="display: flex">
+    <span>Already have an account?&nbsp; | </span><button ion-button color="secondary" clear small no-margin no-padding (click)="goToLogin()">Sign In</button>
+  </div>
 
 </ion-content>

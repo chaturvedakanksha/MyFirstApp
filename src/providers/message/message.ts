@@ -1,12 +1,12 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController,ToastController } from 'ionic-angular';
 
 
 @Injectable()
 export class MessageService {
 
-  constructor(public alertctrl:AlertController) {
+  constructor(public alertctrl:AlertController,private toastCtrl: ToastController) {
     console.log('Hello MessageProvider Provider');
   }
 
@@ -17,6 +17,20 @@ export class MessageService {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
   }
 
 }
