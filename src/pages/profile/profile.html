@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <div style="display:flex;">
+        <ion-title text-start>Edit Profile</ion-title>
+        <ion-buttons text-end>
+          <button ion-button clear styl="text-transform: none" (click)="close()">cancel</button>
+        </ion-buttons>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+   <ion-list>
+    <ion-item>
+      <ion-label floating> USERNAME</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username" required></ion-input>
+      
+    </ion-item>
+    <ion-item>
+      <ion-label floating>PASSWORD</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>PHONE NUMBER</ion-label>
+      <ion-input  required type="number" [(ngModel)]="user.phoneno"></ion-input>
+    </ion-item>
+    <ion-item >
+    <ion-label floating>EMAIL ADDRESS</ion-label>
+    <ion-input type="text" required [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  </ion-list>
+</ion-content>

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { User } from '../../app/user';
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -94,6 +94,19 @@ export class AuthService {
       {
           return this.afauth.auth.currentUser;
       }
+  }
+
+ async logout()
+  {
+     let result = await this.afauth.auth.signOut().then( re => {
+                  console.log('IAS-> Logged out Successfully ');
+                  return 1;
+     }).catch(() => {
+              console.log('IAS->Error while logging out');
+              return 0;
+     });
+      return result;
+
   }
 
 }

@@ -16,6 +16,8 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class LoginPage {
   user = {} as User;
   constructor(public navCtrl: NavController, public navParams: NavParams, public mesServ: MessageService,public authService:AuthService) {
+      this.user.email = 'test@tst.in';
+      this.user.password ='123123';
   }
 
   ionViewDidLoad() {
@@ -34,12 +36,14 @@ export class LoginPage {
       this.authService.signin(user.email,user.password).then(result1 => {
         if(result1 == 1)
         {
-          if(this.authService.getCurrentUser().emailVerified)
-          this.navCtrl.setRoot(UserhomePage);
-          else{
-          this.mesServ.showAlert('Email not Verified','Please verify your email first');
-          this.authService.emailverification();
-          }
+          // if(this.authService.getCurrentUser().emailVerified)
+          // this.navCtrl.setRoot(UserhomePage);
+          // else{
+          // this.mesServ.showAlert('Email not Verified','Please verify your email first');
+          // this.authService.emailverification();
+          // }
+                    this.navCtrl.setRoot(UserhomePage);
+
         }
         else 
         {

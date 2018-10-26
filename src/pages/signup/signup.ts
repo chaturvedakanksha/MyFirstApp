@@ -7,6 +7,7 @@ import { LoginPage } from '../login/login';
 //import { Observable } from 'rxjs/Observable';
 import { FirebaseDatabaseService } from '../../providers/firebase-database-service/firebase-database-service';
 import { AuthService } from '../../providers/auth-service/auth-service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -16,27 +17,39 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class SignupPage {
 
 user = {} as User;
-//dbuser : Observable<any[]>;
-  constructor(public authservice: AuthService, public navCtrl: NavController, public navParams: NavParams, public mesServ:MessageService,private dbserv:FirebaseDatabaseService) {
-    
-   
-
+//signupItemRef$: FirebaseListObservable<any[]>;
+  constructor(public authservice: AuthService, public navCtrl: NavController, public navParams: NavParams, public mesServ:MessageService,private dbserv:FirebaseDatabaseService, public afDB: AngularFireDatabase) {
+    //this.signupItemRef$ = this.afDB.list('Users');
   }
 
   signUp(user : User)
   {
+
+   // this.mesServ.showAlert('gg',user.username+user.phoneno+user.password+user.email);
+    // this.signupItemRef$.push({
+    //   userName: user.username,
+    //   userPhoneNo: user.phoneno,
+    //   userPass: user.password,
+    //   userMail: user.email
+    // });
+    
     this.authservice.signup(user.email,user.password).then(result1 =>{
       //console.log("my signed Up: "+result);
       if(result1 == 1)
       {
+          //this.mesServ.showAlert('gg',user.username+user.phoneno+user.password+user.email);
          this.dbserv.writeUserData(this.authservice.getUID(),user).then(result => {
         if(result==1)        
        { 
          this.navCtrl.push(LoginPage);
          this.mesServ.showAlert('Congrats!','You are registered successfully, please verify your account by clicking on the link sent on your email.'); 
-       }
+         this.user.email='';
+         this.user.password='';
+         this.user.phoneno='';
+         this.user.username='';
+        }
     });
-  }
+     }
       else 
       {
           if(result1 == 2)
@@ -49,17 +62,8 @@ user = {} as User;
           this.mesServ.presentToast('Somthing went wrong');
       }        
           });
- 
-    
-  //  this.dbserv.writeUserData(user).then(result => {
-  //         this.navCtrl.push(LoginPage);
-  //         console.log(result);
-  //  }).catch(err => {
-  //         this.mesServ.showAlert('error',err);
-  //  });
 
-    
-    //this.navCtrl.setRoot(LoginPage,user); 
+  
   }
 
   goToLogin()
